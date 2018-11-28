@@ -6,39 +6,40 @@ import * as $ from 'jquery';
 // Service
 import { GetDataService } from './../../services/get-data/get-data.service';
 
+// Language
+import { default as LANG_VI } from '../../../lang/lang_vi';
+import { default as LANG_JP } from '../../../lang/lang_jp';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
   providers: [ GetDataService ]
 })
-
 export class FooterComponent implements OnInit {
   public logo ='./assets/images/logo.png';
-  footerURL: string;
-  footerData: any;
-  lang : string;
+  private _footerURL: string;
+  public footerData: any;
+  public LANGUAGE : any = LANG_VI;
+  public address: string;
+  public tel: string;
+  public hotline: string;
+  public email: string;
+
   constructor(
-    private http: HttpClient,
-    private http2: HttpClient,
+    private _http: HttpClient,
     private _getDataService: GetDataService,
-    private route: ActivatedRoute
-  ) { 
-    // var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight; 
-    //   console.log(h);
-    //   if(h < 400){
-
-    //   }     
-    
-  }
-
+    private _route: ActivatedRoute
+  ) { }
   ngOnInit() {
-    //change language
-    this.route.queryParams.subscribe(data => {
-      this.lang = data.lang;
+    // Change language
+    this._route.queryParams.subscribe(data => {
+      if (data.lang === 'vi') {
+        this.LANGUAGE = LANG_VI;
+      } else {
+        this.LANGUAGE = LANG_JP;
+      }
     });
-    this.footerURL = this._getDataService.getFooterURL();
-    //this.logoURL = this._getDataService.getLogoURL();
+    this._footerURL = this._getDataService.getFooterURL();
 
      //Scroll the mouse and call the scrollFunction
      window.onscroll = () => {
@@ -54,18 +55,29 @@ export class FooterComponent implements OnInit {
          }
      }
 
-     // Click button to the top
+     // Click button to back to top of page
      document.getElementById('backToTop').addEventListener("click", function(){
          document.body.scrollTop =  $("html, body").animate({ scrollTop: 0 }, "slow");
      });
 
-    // Get infomation from strapi server
-    this.http.get(this.footerURL).subscribe(data => {
+    // Get infomation from server
+    this._http.get(this._footerURL).subscribe(data => {
       this.footerData = data;
+      this.tel = this.footerData[0].Tel;
+      this.email = this.footerData[0].Email;
+      this._route.queryParams.subscribe(data => {
+        if (data.lang === 'vi') {
+          this.address = this.footerData[0].Address;
+          this.hotline = this.footerData[0].Hotline;
+        } else {
+          this.address = this.footerData[0].Japanese_address;
+          this.hotline = this.footerData[0].japanese_hotline;
+        }
       });
+    });
     }
 
-  // Change social icon color when hover on it
+  // Change social icon when hover on it
   changeIcon(icon: string) {
       if (icon === "facebook") {
         $('#facebook-icon').attr("src","./assets/images/facebook-logo-hover.png");

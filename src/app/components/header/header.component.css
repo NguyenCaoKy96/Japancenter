@@ -257,7 +257,7 @@ span {
     margin-right: 10px;
 }
 
-#bubble, .write {
+#bubble {
     position: sticky;
     position: -webkit-sticky;
     top: 250px;
@@ -272,7 +272,7 @@ span {
     color: white;
     font-weight: bold;
     word-wrap: initial;
-    padding: 13px 6px;
+    padding: 20px 0px;
     text-align: center;
     overflow: none !important;
     position: fixed;
@@ -282,14 +282,13 @@ span {
 }
 
 
-
 @media only screen and (max-width: 767px) {
     #bubble {
         width:  46px;
         height: 47px;
-        padding: 9px 0px;
-        margin-top: -130px;
-        font-size: 11px;
+        padding: 15px 0px;
+        margin-top: -57px;
+        font-size: 10px;
 
 
     }

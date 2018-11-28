@@ -61,7 +61,7 @@ import { JapanCenterComponent } from './components/career-opportunities/japan-ce
 import { EnterpriseComponent } from './components/career-opportunities/enterprise/enterprise.component';
 
 // Opening schedule component
-import { OpeningScheduleComponent } from './components/opening-schedule/opening-schedule.component';
+
 
 // Why choose Quy Nhon University component
 import { WhyChooseJpcenterComponent } from './components/why-choose-jpcenter/why-choose-jpcenter.component';
@@ -103,6 +103,8 @@ import { LearnRegisterComponent } from './components/learn-register/learn-regist
 // Pagination
 import {NgxPaginationModule } from 'ngx-pagination';
 
+import { ClassManagementComponent } from './components/class-management/class-management.component';
+
 
 import { EngineerComponent } from './components/news/news/engineer/engineer/engineer.component';
 import { OwlModule } from 'ngx-owl-carousel';
@@ -118,10 +120,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 // Angular Material Tooltips
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
+import { EnrollListPageComponent } from './components/enroll-list-page/enroll-list-page.component';import { AcademicComponent } from './components/academic/academic.component';
+import { ExamPointComponent } from './components/academic/exam-point/exam-point.component';
+import { CalendarComponent } from './components/academic/calendar/calendar.component';
 const routes: Routes = [
   {
-
     path: 'student',    
     component: StudentComponent,
     children:
@@ -153,10 +156,14 @@ const routes: Routes = [
         }
       ]
   },
-  {
-         path :'viet-bai',
-        component: SupporterPageComponent
-  },
+  // {
+  //   path :'quan-ly-lop-hoc',
+  //   component: ClassManagementComponent,
+  // },
+  // {
+  //   path :'danh-sach-dang-ky',
+  //   component: EnrollListPageComponent,
+  // },
   {
       path: '',
       component: HomeComponent
@@ -169,6 +176,10 @@ const routes: Routes = [
     path: 'gioi-thieu',
     component: IntroductionComponent,
     children: [
+      {
+        path: '',
+        component: IntroductionOneComponent
+      },
       {
         path: 'trung-tam-nhat-ban',
         component: IntroductionOneComponent
@@ -196,6 +207,10 @@ const routes: Routes = [
     component: IntroductionComponent,
     children: [
       {
+        path: '',
+        component: IntroductionOneComponent
+      },
+      {
         path: '日本センター',
         component: IntroductionOneComponent
       },
@@ -221,6 +236,10 @@ const routes: Routes = [
     path: 'dich-vu-doi-tac',
     component: ServicePartnerComponent,
     children: [
+      {
+        path: '',
+        component: StudyComponent
+      },
       {
         path: 'tu-van-va-viec-lam',
         component: StudyComponent
@@ -248,6 +267,10 @@ const routes: Routes = [
     component: CoursesComponent,
     children: [
       {
+        path: '',
+        component: JlptComponent,
+      },
+      {
         path: 'cac-khoa-tieng-nhat-JLPT',
         component: JlptComponent,
       },
@@ -265,10 +288,7 @@ const routes: Routes = [
     path: 'tai-sao-chon-QNU-Japan-Center',
     component: WhyChooseJpcenterComponent
   },
-  {
-    path: 'lich-khai-giang',
-    component: OpeningScheduleComponent
-  },
+  
   {
     path: 'tin-tuc-su-kien',
     component: NewspageComponent
@@ -277,6 +297,10 @@ const routes: Routes = [
     path: 'co-hoi-nghe-nghiep',
     component: CareerOpportunitiesComponent,
     children: [
+      {
+        path: '',
+        component: JapanCenterComponent
+      },
       {
         path: 'trung-tam-nhat-ban',
         component: JapanCenterComponent
@@ -327,16 +351,39 @@ const routes: Routes = [
     path: 'logout',
     component: LogoutComponent,
     children: [
-      {
-        path :'viet-bai',
-        component: SupporterPageComponent
-      }
+
     ]
+  },
+  {
+    path :'viet-bai',
+    component: SupporterPageComponent
+  },
+  {
+    path :'quan-ly-lop-hoc',
+    component: ClassManagementComponent,
+  },
+  {
+    path :'danh-sach-dang-ky',
+    component: EnrollListPageComponent,
   },
   {
     path: 'dang-ky-hoc',
     component: BubbleEnrollComponent
   },
+  {
+    path: 'hoc-vu',
+    component: AcademicComponent
+  },
+   {
+    path: 'hoc-vu/lich-hoc',
+    component: CalendarComponent
+  },
+  
+    {
+    path: 'hoc-vu/diem-thi',
+    component: ExamPointComponent
+  },
+
 ];
 
 const childRoutes: Routes = [
@@ -369,7 +416,6 @@ const childRoutes: Routes = [
     CoursesComponent,
     CareerOpportunitiesComponent,
     ServicePartnerComponent,
-    OpeningScheduleComponent,
     JapanCenterComponent,
     EnterpriseComponent,
     BreadcrumbsComponent,
@@ -397,7 +443,10 @@ const childRoutes: Routes = [
     UserComponent,
     EngineerComponent,
     BubbleEnrollComponent,
-
+ClassManagementComponent,
+    EnrollListPageComponent,AcademicComponent,
+    ExamPointComponent,
+    CalendarComponent,
   ],
   imports: [
     CKEditorModule,

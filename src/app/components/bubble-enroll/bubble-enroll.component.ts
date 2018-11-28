@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GetDataService } from './../../services/get-data/get-data.service';
 import * as $ from 'jquery';
 import axios from 'axios';
+import { AbstractControl } from '@angular/forms';
 
 
 @Component({
@@ -15,11 +16,13 @@ import axios from 'axios';
   providers: [
     GetDataService]
 })
+
 export class BubbleEnrollComponent implements OnInit {
 	public frmUser: FormGroup;
    registerURL:string;
    registerData;
    lang: string = 'vi';
+
  
 
   constructor(
@@ -43,7 +46,9 @@ export class BubbleEnrollComponent implements OnInit {
       this.route.queryParams.subscribe(data => {
       this.lang = data.lang;
     });
-
+     $(function(){
+       $(document#name).html($.trim(" fullname "))
+     });
       // Post data register page
   	$(function($){
   		var validation_holder;
@@ -84,13 +89,14 @@ export class BubbleEnrollComponent implements OnInit {
 
   		this.frmUser = this._formBuilder.group({
   			fullname: ['',[
-  				Validators.required,
-          Validators.pattern('^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ ]+$'),
+  				Validators.required, 
+          Validators.pattern('^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ ]+$')
   			]],
      
   			email: ['',[
   				Validators.required,
-  				Validators.pattern('[a-zA-Z0-9_\.]+@[a-zA-Z]+\.[a-zA-Z]+(\.[a-zA-Z]+)*')
+  				Validators.pattern('[a-zA-Z0-9_\.]+@[a-zA-Z]+\.[a-zA-Z]+(\.[a-zA-Z]+)*'),
+        
   			]],
   			phone: ['',[
   				Validators.required,
@@ -107,5 +113,7 @@ export class BubbleEnrollComponent implements OnInit {
   	onSubmitForm(){
   		 console.log(this.frmUser.value);
 		}  	
+
+
 
 }

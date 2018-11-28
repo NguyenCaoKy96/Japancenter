@@ -159,4 +159,18 @@ export class GetDataService {
 		let partnerURL = this.serverURL + '/partners';
 		return partnerURL;
 	}
+
+	getclassesItemURL(id) : string {
+		let classItem = this.serverURL + '/classes/' + id;
+		return classItem;
+	}
+
+	// Enroll list
+	getEnrollListURL() {
+		let enrollListURL = this.serverURL + '/registers';
+		return enrollListURL;
+	}getAcademicsURL(): string {
+		let academicsURL = this.serverURL + '/academics';
+		return academicsURL;
+	}
 }

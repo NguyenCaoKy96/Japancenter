@@ -5,20 +5,12 @@
         <div class="col-md-1">
           <a href="#"><img class="logo" [src]='logo' ></a>
         </div>
-        <div class="col-md-5" *ngIf="lang === 'vi'">
-          <address *ngFor='let info of footerData'>
-            <p><strong>Địa chỉ: </strong>{{ info.Address }}</p>
-            <p><strong>Tel: </strong>{{ info.Tel }}</p>
-            <p><strong>Email: </strong><a href="https://accounts.google.com" class="email">{{ info.Email }}</a></p>
-            <p><strong>Hotline: </strong>{{ info.Hotline }}</p>
-          </address>
-        </div>
-        <div class="col-md-5" *ngIf="lang === 'jp'">
-          <address *ngFor='let info of footerData'>
-            <p><strong>アドレス: </strong>{{ info.Japanese_address}}</p>
-            <p><strong>電話番号: </strong>{{ info.Tel }}</p>
-            <p><strong>電子メール: </strong><a href="https://accounts.google.com" class="email">{{ info.Email }}</a></p>
-            <p><strong>ホットライン: </strong>{{ info.japanese_Hotline }}</p>
+        <div class="col-md-5">
+          <address>
+            <p><strong>{{LANGUAGE.ADDRESS}}: </strong>{{address}}</p>
+            <p><strong>{{LANGUAGE.TEL}}: </strong>{{tel}}</p>
+            <p><strong>{{LANGUAGE.EMAIL}}: </strong><a href="https://accounts.google.com" class="email">{{email}}</a></p>
+            <p><strong>{{LANGUAGE.HOTLINE}}: </strong>{{hotline}}</p>
           </address>
         </div>
         <div class="col-md-4">
@@ -27,8 +19,7 @@
         </div>
         <div class="col-md-2">
           <div>
-            <b><p class="text-QNU"  *ngIf="lang === 'vi'">Kết nối QNU-JC</p></b>
-            <b><p class="text-QNU"  *ngIf="lang === 'jp'">JC - QNUを接続します</p></b>
+            <b><p class="text-QNU">{{LANGUAGE.QNU_JC_CONNECT}}</p></b>
             <div *ngFor='let info of footerData'>
               <a [attr.href]="info.Facebook" target="_blank">
                   <img src="./assets/images/facebook-logo.png" class="mr-2 social-icon" id="facebook-icon" alt="facebook" (mouseenter)="changeIcon('facebook')" (mouseleave)="changeIcon('facebook-normal')">
@@ -43,7 +34,7 @@
     </div>
   </div>
   <div class="copyright">
-    Copyright @ 2018. All Rights Reserved
+    {{LANGUAGE.COPYRIGHT}} @ {{LANGUAGE.YEAR}}. {{LANGUAGE.LICENSE}}
   </div>
 </footer>
 <!-- Button Back To Top -->

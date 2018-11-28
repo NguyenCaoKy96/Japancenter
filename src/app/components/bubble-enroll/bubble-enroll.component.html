@@ -9,7 +9,7 @@
                     <div class="form-group has-error">
                         <label for="" *ngIf="lang === 'vi'">Họ và tên<a>*</a>:</label>
                         <label for="" *ngIf="lang === 'jp'">名前と姓<a>*</a>:</label>
-                        <input class="form-control input-lg" id="name" placeholder="Họ và tên..." name="txtFullname"  type="text" formControlName="fullname" autofocus maxlength="255">
+                        <input class="form-control input-lg" id="name" placeholder="Họ và tên..." name="txtFullname"  type="text" formControlName="fullname" autofocus maxlength="255" >
                         <span class="lable lable-danger" *ngIf="frmUser.controls.fullname.dirty && frmUser.controls.fullname.errors?.required"> Vui lòng nhập họ và tên.</span> 
                         <span class="lable lable-danger" *ngIf="frmUser.controls.fullname.dirty && frmUser.controls.fullname.errors?.pattern"> Họ và tên không đúng.</span>
                         <span class="val_fname"></span>

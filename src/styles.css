@@ -154,7 +154,6 @@ a:hover {
 
 .nav-tabs {
     padding: 20px 5px;
-    border: solid 1px #e5e5e5;
     background-color: white;
     margin-bottom: 30px;
     display: block;
@@ -324,4 +323,69 @@ input[type="color"]:focus,
 }
 input.ng-invalid.ng-touched{
     border: 1px solid rgb(188, 0, 45) ;
+}
+
+/* Academics */
+
+
+#schedule {
+    position: relative;
+    text-align: center;
+    top: -7px;
+    color: black;
+    font-size: 40px;
+    font-family: "Lemonada", sans-serif;
+}
+
+table {
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+tr {
+    cursor: pointer;
+}
+
+td,
+th {
+    text-align: center;
+    vertical-align: middle !important;
+    min-width: 45px;
+}
+
+thead {
+    background-color: brown;
+    color: white;
+}
+
+@media only screen and (max-width: 767px) {
+    #schedule {
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
+
+    table {
+        font-size: 12px;
+        text-align: center;
+        vertical-align: middle;
+        overflow-wrap: break-word;
+    }
+
+    td {
+        max-width: 45px;
+    }
+}
+
+.schedule {
+    max-width: 25%;
+}
+
+.detail-schedule {
+    width: 100%;
+}
+.btn {
+    color: #fff;
+    background-color: rgb(188, 0, 45);
+    border-color: rgb(188, 0, 45);
+    float: right;
 }
