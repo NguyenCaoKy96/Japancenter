@@ -10,33 +10,37 @@
       </ul>
   </div>
   <div class="col-md-8 col-lg-9">
-    <div>
-      <table class="table left-navigation">
-        <thead>
-          <tr>
-            <th>{{LANGUAGE.NUMERICAL_ORDER}}</th>
-            <th>{{LANGUAGE.FULL_NAME}}</th>
-            <th>{{LANGUAGE.EMAIL}}</th>
-            <th>{{LANGUAGE.PHONE_NUMBERR}}</th>
-            <th>{{LANGUAGE.CLASS_NAME}}</th>
-            <th>{{LANGUAGE.NOTES}}</th>
-            <th *ngIf="status==='uncontacted'">{{LANGUAGE.STATUS}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor = "let item of contactedStudentList; let i = index">
-            <td scope="row">{{i+1}}</td>
-            <td *ngIf="item">{{item.Fullname}}</td>
-            <td *ngIf="item">{{item.Email}}</td>
-            <td *ngIf="item">{{item.Phone}}</td>
-            <td *ngIf="item">{{item.Course}}</td>
-            <td *ngIf="item">{{item.Notes}}</td>
-            <td *ngIf="status==='uncontacted'">
+    <div>    
+      <form action="" method="POST">
+        <h4>Tìm kiếm</h4>
+        <input type="text" id="myInput" placeholder="Tìm kiếm.." title="Type in a name">
+        <table id="myTable" class="table left-navigation">
+          <thead>
+            <tr>
+              <th>{{LANGUAGE.NUMERICAL_ORDER}}</th>
+              <th>{{LANGUAGE.FULL_NAME}}</th>
+              <th>{{LANGUAGE.EMAIL}}</th>
+              <th>{{LANGUAGE.PHONE_NUMBERR}}</th>
+              <th>{{LANGUAGE.CLASS_NAME}}</th>
+              <th *ngIf="status==='uncontacted'">{{LANGUAGE.STATUS}}</th>
+            </tr>
+          </thead>
+          <tbody method="POST">
+            <tr *ngFor = "let item of contactedStudentList; let i = index">
+              <td scope="row">{{i+1}}</td>
+              <td *ngIf="item">{{item.Fullname}}</td>
+              <td *ngIf="item">{{item.Email}}</td>
+              <td *ngIf="item">{{item.Phone}}</td>
+              <td *ngIf="item">{{item.Course}}</td>       
+              <td *ngIf="status==='uncontacted'">
               <input type="checkbox" value="value1" (click)="onCheck($event, item)">
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <input type="text" placeholder="ID lớp cần đưa vào..">&nbsp;&nbsp;&nbsp;&nbsp;
+        <button id="submit" type="submit" class="btn btn-danger" >Đưa vào lớp</button>
+      </form>
     </div>
   </div>
 </div>
